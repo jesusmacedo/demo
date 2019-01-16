@@ -1,0 +1,51 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand"> <img src="./assets/images/wallet.svg" />{{ 'APP_NAME' | translate }} </a>
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link">{{ 'START.MENU_HOME' | translate }} <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">{{ 'START.MENU_LOGIN' | translate }}</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a
+                    class="nav-link dropdown-toggle"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    {{ 'START.OPT_LANGUAGE' | translate }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" (click)="didSelectLanguage(EN)">{{ 'START.OPT_LANG_EN' | translate }}</a>
+                    <a class="dropdown-item" (click)="didSelectLanguage(ES)">{{ 'START.OPT_LANG_ES' | translate }}</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="card">
+    <div class="card-header">{{ 'START.CARD_HEADER' | translate }}</div>
+    <div class="card-body">
+        <h5 class="card-title">{{ 'START.CARD_TITLE' | translate }}</h5>
+        <p class="card-text">{{ 'START.CARD_TEXT' | translate }}</p>
+        <a id="btn-create" class="btn btn-primary btn-sm btn-block">{{ 'START.BUTTON_JOIN' | translate }}</a>
+    </div>
+</div>
+
+<demo-footer></demo-footer>

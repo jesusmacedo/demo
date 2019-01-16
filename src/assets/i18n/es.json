@@ -1,0 +1,18 @@
+{
+    "APP_NAME": "Nuevo Banco de México",
+    "START": {
+        "MENU_HOME": "Inicio",
+        "MENU_LOGIN": "Entrar",
+        "OPT_LANGUAGE": "Lenguaje",
+        "OPT_LANG_EN": "Inglés",
+        "OPT_LANG_ES": "Español",
+        "CARD_HEADER": "Crea una nueva cuenta",
+        "CARD_TITLE": "Únete hoy!",
+        "CARD_TEXT": "Se parte del MEJOR banco del mundo.",
+        "BUTTON_JOIN": "Crear"
+    },
+    "FOOTER": {
+        "COPY": "Jesus Macedo",
+        "VERSION": "Versión: {{value}}"
+    }
+}

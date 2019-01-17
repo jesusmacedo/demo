@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 import { CustomInterceptor } from '../interceptors/custom.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        NgHttpLoaderModule.forRoot(),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

@@ -39,12 +39,74 @@
     </div>
 </nav>
 
-<div class="card">
+<div *ngIf="!showForm" class="card">
     <div class="card-header">{{ 'START.CARD_HEADER' | translate }}</div>
     <div class="card-body">
         <h5 class="card-title">{{ 'START.CARD_TITLE' | translate }}</h5>
         <p class="card-text">{{ 'START.CARD_TEXT' | translate }}</p>
-        <a id="btn-create" class="btn btn-primary btn-sm btn-block">{{ 'START.BUTTON_JOIN' | translate }}</a>
+        <a id="btn-create" class="btn btn-primary btn-sm btn-block" (click)="showForm = true">
+            {{ 'START.BUTTON_JOIN' | translate }}
+        </a>
+    </div>
+</div>
+
+<div *ngIf="showForm" class="card">
+    <div class="card-header">{{ 'START.CARD_HEADER' | translate }}</div>
+    <div class="card-body">
+        <form [formGroup]="creationForm">
+            <div class="form-group">
+                <label for="inputName">{{ 'START.FORM_CREATE.LABEL_FIRSTNAME' | translate }}</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="inputName"
+                    aria-describedby="first name"
+                    placeholder="{{ 'START.FORM_CREATE.PLACEHOLDER_FIRSTNAME' | translate }}"
+                    autocomplete="off"
+                    formControlName="firstName"
+                />
+            </div>
+            <div class="form-group">
+                <label for="inputLastName">{{ 'START.FORM_CREATE.LABEL_LASTNAME' | translate }}</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="inputLastName"
+                    aria-describedby="last name"
+                    placeholder="{{ 'START.FORM_CREATE.PLACEHOLDER_LASTNAME' | translate }}"
+                    autocomplete="off"
+                    formControlName="lastName"
+                />
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">{{ 'START.FORM_CREATE.LABEL_EMAIL' | translate }}</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    aria-describedby="emailHelp"
+                    placeholder="{{ 'START.FORM_CREATE.PLACEHOLDER_EMAIL' | translate }}"
+                    autocomplete="off"
+                    formControlName="email"
+                />
+                <small id="emailHelp" class="form-text text-muted">{{ 'START.FORM_CREATE.PRIVACY' | translate }}</small>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">{{ 'START.FORM_CREATE.LABEL_PASSWORD' | translate }}</label>
+                <input
+                    type="password"
+                    class="form-control"
+                    id="inputPassword"
+                    placeholder="{{ 'START.FORM_CREATE.PLACEHOLDER_PASSWORD' | translate }}"
+                    autocomplete="off"
+                    formControlName="password"
+                />
+            </div>
+            <demo-alerts *ngIf="resultAlert !== undefined" [alert]="resultAlert"></demo-alerts>
+            <button type="submit" class="btn btn-primary" [disabled]="!creationForm.valid" (click)="didPressSubmit()">
+                {{ 'START.FORM_CREATE.LABEL_FIRSTNAME' | translate }}
+            </button>
+        </form>
     </div>
 </div>
 

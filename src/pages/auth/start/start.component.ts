@@ -16,10 +16,13 @@ export class StartComponent implements OnInit {
     EN = 'en';
     ES = 'es';
     // handle account creation and sign-in
-    showCreateForm = false;
-    shotSignInForm = false;
+    showForm = false;
+    isNewAccount = false;
     startForm: FormGroup;
     resultAlert: IAlert;
+    // card settings
+    cardTitle: 'START.CARD_HEADER' | 'START.CARD_TITLE_ENTER';
+    formButtonLabel: 'BUTTONS.ENTER' | 'BUTTONS.SUBMIT';
 
     constructor(
         private translate: TranslateService,
@@ -54,7 +57,11 @@ export class StartComponent implements OnInit {
      * Add two more `FormControl` in order to create a new account.
      */
     didPressCreate(): void {
-        this.showCreateForm = true;
+        // configure card and form for a new account
+        this.showForm = true;
+        this.isNewAccount = true;
+        this.cardTitle = 'START.CARD_HEADER';
+        this.formButtonLabel = 'BUTTONS.SUBMIT';
 
         this.startForm.addControl('firstName', new FormControl('', Validators.compose([Validators.required])));
         this.startForm.addControl('lastName', new FormControl('', Validators.compose([Validators.required])));
@@ -64,16 +71,33 @@ export class StartComponent implements OnInit {
      * Remove two `FormControl` in order to perform a sign-in.
      */
     didPressSignIn(): void {
-        this.shotSignInForm = true;
+        // configure card and form for sing in
+        this.showForm = true;
+        this.isNewAccount = false;
+        this.cardTitle = 'START.CARD_TITLE_ENTER';
+        this.formButtonLabel = 'BUTTONS.ENTER';
 
         this.startForm.removeControl('firstName');
         this.startForm.removeControl('lastName');
     }
 
     /**
+     * According to the previously selected option, create a new account or sign in the user.
+     */
+    didPressFormButton(): void {
+        if (this.isNewAccount) {
+            this._createAccount();
+        } else {
+            // TODO: login
+        }
+    }
+
+    // * Private Methods
+
+    /**
      * Take the data from `startForm` and create a new `ICreateAccount`.
      */
-    didPressSubmit(): void {
+    private _createAccount(): void {
         this.resultAlert = undefined;
         this.spinner.show();
 

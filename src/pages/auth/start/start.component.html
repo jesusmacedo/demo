@@ -16,9 +16,6 @@
             <li class="nav-item active">
                 <a class="nav-link">{{ 'START.MENU_HOME' | translate }} <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link">{{ 'START.MENU_LOGIN' | translate }}</a>
-            </li>
             <li class="nav-item dropdown">
                 <a
                     class="nav-link dropdown-toggle"
@@ -39,7 +36,7 @@
     </div>
 </nav>
 
-<div *ngIf="!showCreateForm && !shotSignInForm" class="card">
+<div *ngIf="!showForm" class="card">
     <div class="card-header">{{ 'START.CARD_HEADER' | translate }}</div>
     <div class="card-body">
         <h5 class="card-title">{{ 'START.CARD_TITLE_JOIN' | translate }}</h5>
@@ -56,11 +53,11 @@
     </li>
 </div>
 
-<div *ngIf="showCreateForm" class="card">
-    <div class="card-header">{{ 'START.CARD_HEADER' | translate }}</div>
+<div *ngIf="showForm" class="card">
+    <div class="card-header">{{ cardTitle | translate }}</div>
     <div class="card-body">
         <form [formGroup]="startForm">
-            <div class="form-group">
+            <div *ngIf="isNewAccount" class="form-group">
                 <label for="inputName">{{ 'START.FORM_CREATE.LABEL_FIRSTNAME' | translate }}</label>
                 <input
                     type="text"
@@ -72,7 +69,7 @@
                     formControlName="firstName"
                 />
             </div>
-            <div class="form-group">
+            <div *ngIf="isNewAccount" class="form-group">
                 <label for="inputLastName">{{ 'START.FORM_CREATE.LABEL_LASTNAME' | translate }}</label>
                 <input
                     type="text"
@@ -109,44 +106,8 @@
                 />
             </div>
             <demo-alerts *ngIf="resultAlert !== undefined" [alert]="resultAlert"></demo-alerts>
-            <button type="submit" class="btn btn-primary" [disabled]="!startForm.valid" (click)="didPressSubmit()">
-                {{ 'BUTTONS.SUBMIT' | translate }}
-            </button>
-        </form>
-    </div>
-</div>
-
-<div *ngIf="shotSignInForm" class="card">
-    <div class="card-header">{{ 'START.CARD_TITLE_ENTER' | translate }}</div>
-    <div class="card-body">
-        <form [formGroup]="startForm">
-            <div class="form-group">
-                <label for="inputEmail">{{ 'START.FORM_CREATE.LABEL_EMAIL' | translate }}</label>
-                <input
-                    type="email"
-                    class="form-control"
-                    id="inputEmail"
-                    aria-describedby="emailHelp"
-                    placeholder="{{ 'START.FORM_CREATE.PLACEHOLDER_EMAIL' | translate }}"
-                    autocomplete="off"
-                    formControlName="email"
-                />
-                <small id="emailHelp" class="form-text text-muted">{{ 'START.FORM_CREATE.PRIVACY' | translate }}</small>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword">{{ 'START.FORM_CREATE.LABEL_PASSWORD' | translate }}</label>
-                <input
-                    type="password"
-                    class="form-control"
-                    id="inputPassword"
-                    placeholder="{{ 'START.FORM_CREATE.PLACEHOLDER_PASSWORD' | translate }}"
-                    autocomplete="off"
-                    formControlName="password"
-                />
-            </div>
-            <demo-alerts *ngIf="resultAlert !== undefined" [alert]="resultAlert"></demo-alerts>
-            <button type="submit" class="btn btn-primary" [disabled]="!startForm.valid" (click)="didPressSubmit()">
-                {{ 'BUTTONS.ENTER' | translate }}
+            <button type="submit" class="btn btn-primary" [disabled]="!startForm.valid" (click)="didPressFormButton()">
+                {{ formButtonLabel | translate }}
             </button>
         </form>
     </div>

@@ -15,9 +15,10 @@ export class StartComponent implements OnInit {
     // available languages
     EN = 'en';
     ES = 'es';
-    // handle account creation
-    showForm = false;
-    creationForm: FormGroup;
+    // handle account creation and sign-in
+    showCreateForm = false;
+    shotSignInForm = false;
+    startForm: FormGroup;
     resultAlert: IAlert;
 
     constructor(
@@ -33,10 +34,8 @@ export class StartComponent implements OnInit {
      * Initialize the `FormGroup` to create a new account.
      */
     ngOnInit() {
-        this.creationForm = this.fb.group({
+        this.startForm = this.fb.group({
             email: new FormControl('', Validators.compose([Validators.email, Validators.required])),
-            firstName: new FormControl('', Validators.compose([Validators.required])),
-            lastName: new FormControl('', Validators.compose([Validators.required])),
             password: new FormControl('', Validators.compose([Validators.required]))
         });
     }
@@ -52,17 +51,37 @@ export class StartComponent implements OnInit {
     }
 
     /**
-     * Take the data from `creationForm` and create a new `ICreateAccount`.
+     * Add two more `FormControl` in order to create a new account.
+     */
+    didPressCreate(): void {
+        this.showCreateForm = true;
+
+        this.startForm.addControl('firstName', new FormControl('', Validators.compose([Validators.required])));
+        this.startForm.addControl('lastName', new FormControl('', Validators.compose([Validators.required])));
+    }
+
+    /**
+     * Remove two `FormControl` in order to perform a sign-in.
+     */
+    didPressSignIn(): void {
+        this.shotSignInForm = true;
+
+        this.startForm.removeControl('firstName');
+        this.startForm.removeControl('lastName');
+    }
+
+    /**
+     * Take the data from `startForm` and create a new `ICreateAccount`.
      */
     didPressSubmit(): void {
         this.resultAlert = undefined;
         this.spinner.show();
 
         const newAccount: ICreateAccount = {
-            firstname: this.creationForm.controls['firstName'].value,
-            lastname: this.creationForm.controls['lastName'].value,
-            email: this.creationForm.controls['email'].value,
-            password: this.creationForm.controls['password'].value
+            firstname: this.startForm.controls['firstName'].value,
+            lastname: this.startForm.controls['lastName'].value,
+            email: this.startForm.controls['email'].value,
+            password: this.startForm.controls['password'].value
         };
 
         this.authService.postCreate(newAccount).subscribe(

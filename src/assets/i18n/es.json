@@ -1,5 +1,9 @@
 {
     "APP_NAME": "Nuevo Banco de México",
+    "BUTTONS": {
+        "SUBMIT": "Enviar",
+        "ENTER": "Iniciar sesión"
+    },
     "START": {
         "MENU_HOME": "Inicio",
         "MENU_LOGIN": "Entrar",
@@ -7,9 +11,11 @@
         "OPT_LANG_EN": "Inglés",
         "OPT_LANG_ES": "Español",
         "CARD_HEADER": "Crea una nueva cuenta",
-        "CARD_TITLE": "Únete hoy!",
+        "CARD_TITLE_JOIN": "Únete hoy!",
         "CARD_TEXT": "Se parte del MEJOR banco del mundo.",
         "BUTTON_JOIN": "Crear",
+        "CARD_TITLE_ENTER": "Ya tienes una cuenta? Entra!",
+        "BUTTON_ENTER": "Iniciar sesión",
         "FORM_CREATE": {
             "LABEL_FIRSTNAME": "Nombre",
             "PLACEHOLDER_FIRSTNAME": "Ingresa nombre",

@@ -1,7 +1,8 @@
 {
     "APP_NAME": "New Bank of Mexico",
     "BUTTONS": {
-        "SUBMIT": "Submit"
+        "SUBMIT": "Submit",
+        "ENTER": "Sign In"
     },
     "START": {
         "MENU_HOME": "Home",
@@ -10,9 +11,11 @@
         "OPT_LANG_EN": "English",
         "OPT_LANG_ES": "Spanish",
         "CARD_HEADER": "Create a new account",
-        "CARD_TITLE": "Join us today!",
+        "CARD_TITLE_JOIN": "Join us today!",
         "CARD_TEXT": "Be part of the BEST bank in the world.",
         "BUTTON_JOIN": "Create",
+        "CARD_TITLE_ENTER": "Already have an account? Enter!",
+        "BUTTON_ENTER": "Sign In",
         "FORM_CREATE": {
             "LABEL_FIRSTNAME": "First name",
             "PLACEHOLDER_FIRSTNAME": "Enter first name",

@@ -9,7 +9,18 @@
         "CARD_HEADER": "Crea una nueva cuenta",
         "CARD_TITLE": "Únete hoy!",
         "CARD_TEXT": "Se parte del MEJOR banco del mundo.",
-        "BUTTON_JOIN": "Crear"
+        "BUTTON_JOIN": "Crear",
+        "FORM_CREATE": {
+            "LABEL_FIRSTNAME": "Nombre",
+            "PLACEHOLDER_FIRSTNAME": "Ingresa nombre",
+            "LABEL_LASTNAME": "Apellido",
+            "PLACEHOLDER_LASTNAME": "Ingresa apellido",
+            "LABEL_EMAIL": "Dirección de correo",
+            "PLACEHOLDER_EMAIL": "Ingresa correo",
+            "PRIVACY": "Tus datos estan seguros, revisa nuestra Política de Privacidad",
+            "LABEL_PASSWORD": "Contraseña",
+            "PLACEHOLDER_PASSWORD": "Ingresa la contraseña"
+        }
     },
     "FOOTER": {
         "COPY": "Jesus Macedo",

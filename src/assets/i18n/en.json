@@ -1,5 +1,8 @@
 {
     "APP_NAME": "New Bank of Mexico",
+    "BUTTONS": {
+        "SUBMIT": "Submit"
+    },
     "START": {
         "MENU_HOME": "Home",
         "MENU_LOGIN": "Sign In",
@@ -9,7 +12,18 @@
         "CARD_HEADER": "Create a new account",
         "CARD_TITLE": "Join us today!",
         "CARD_TEXT": "Be part of the BEST bank in the world.",
-        "BUTTON_JOIN": "Create"
+        "BUTTON_JOIN": "Create",
+        "FORM_CREATE": {
+            "LABEL_FIRSTNAME": "First name",
+            "PLACEHOLDER_FIRSTNAME": "Enter first name",
+            "LABEL_LASTNAME": "Last name",
+            "PLACEHOLDER_LASTNAME": "Enter last name",
+            "LABEL_EMAIL": "Email address",
+            "PLACEHOLDER_EMAIL": "Enter email",
+            "PRIVACY": "Your data is safe, check our Privacy Policy",
+            "LABEL_PASSWORD": "Password",
+            "PLACEHOLDER_PASSWORD": "Enter password"
+        }
     },
     "FOOTER": {
         "COPY": "Jesus Macedo",

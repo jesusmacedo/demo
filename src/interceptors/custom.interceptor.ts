@@ -1,5 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { SpinnerVisibilityService } from 'ng-http-loader';
 import { Observable, throwError } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { EApi } from '../enums/api.enum';
@@ -15,7 +16,7 @@ const LANGS = 'assets/i18n/';
  */
 @Injectable()
 export class CustomInterceptor implements HttpInterceptor {
-    constructor() {}
+    constructor(private spinner: SpinnerVisibilityService) {}
 
     // * HttpInterceptor Implementation
 
@@ -48,6 +49,8 @@ export class CustomInterceptor implements HttpInterceptor {
             tap(
                 (event: HttpEvent<any>) => {},
                 (err: any) => {
+                    this.spinner.hide();
+
                     return throwError(err);
                 }
             )

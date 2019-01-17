@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SpinnerVisibilityService } from 'ng-http-loader';
 import { EAlert } from '../../../enums/common/alert.enum';
@@ -28,7 +29,8 @@ export class StartComponent implements OnInit {
         private translate: TranslateService,
         private fb: FormBuilder,
         private spinner: SpinnerVisibilityService,
-        private authService: AuthService
+        private authService: AuthService,
+        private router: Router
     ) {}
 
     // * Angular Lifecycle
@@ -85,10 +87,13 @@ export class StartComponent implements OnInit {
      * According to the previously selected option, create a new account or sign in the user.
      */
     didPressFormButton(): void {
+        this.resultAlert = undefined;
+        this.spinner.show();
+
         if (this.isNewAccount) {
             this._createAccount();
         } else {
-            // TODO: login
+            this._signIn();
         }
     }
 
@@ -98,9 +103,6 @@ export class StartComponent implements OnInit {
      * Take the data from `startForm` and create a new `ICreateAccount`.
      */
     private _createAccount(): void {
-        this.resultAlert = undefined;
-        this.spinner.show();
-
         const newAccount: ICreateAccount = {
             firstname: this.startForm.controls['firstName'].value,
             lastname: this.startForm.controls['lastName'].value,
@@ -121,6 +123,24 @@ export class StartComponent implements OnInit {
                     type: EAlert.ERROR
                 };
             },
+            () => this.spinner.hide()
+        );
+    }
+
+    /**
+     * Sign in the user with the received credentials.
+     */
+    private _signIn(): void {
+        const access: { email: string; password: string } = {
+            email: this.startForm.controls['email'].value,
+            password: this.startForm.controls['password'].value
+        };
+
+        this.authService.postLogin(access).subscribe(
+            () => {
+                // TODO: navigate to the accounts page
+            },
+            undefined,
             () => this.spinner.hide()
         );
     }

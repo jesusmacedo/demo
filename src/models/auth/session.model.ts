@@ -6,8 +6,34 @@ import { Observable } from 'rxjs';
  */
 @Injectable()
 export class MSession {
+    // whole session object
+    private static _session: ISession;
     // actual token received from postLogin response
     static ACCESS_TOKEN = 'X-access-token';
+
+    // * Static Public Methods
+
+    /**
+     * Set the user session.
+     * @param session from jwt token.
+     */
+    static setSessionData(session: any): void {
+        this._session = {
+            id: session.id,
+            iat: session.lat,
+            exp: session.exp,
+            email: session.email,
+            firstname: session.firstname,
+            lastname: session.lastname
+        };
+    }
+
+    /**
+     * Get the whole session detail.
+     */
+    static getSessionData(): ISession {
+        return this._session;
+    }
 
     /**
      * Save in the `sessionStorage` the received value.
@@ -27,11 +53,12 @@ export class MSession {
     }
 
     /**
-     * Clear all values from `sessionStorage`.
+     * Clear all values from `sessionStorage` and local session.
      */
     static clearSession(): Observable<any> {
         const observable = new Observable<any>(observer => {
             sessionStorage.clear();
+            this._session = undefined;
 
             observer.next();
             observer.complete();

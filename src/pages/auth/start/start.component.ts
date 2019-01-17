@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SpinnerVisibilityService } from 'ng-http-loader';
 import { EAlert } from '../../../enums/common/alert.enum';
@@ -15,16 +16,21 @@ export class StartComponent implements OnInit {
     // available languages
     EN = 'en';
     ES = 'es';
-    // handle account creation
+    // handle account creation and sign-in
     showForm = false;
-    creationForm: FormGroup;
+    isNewAccount = false;
+    startForm: FormGroup;
     resultAlert: IAlert;
+    // card settings
+    cardTitle: 'START.CARD_HEADER' | 'START.CARD_TITLE_ENTER';
+    formButtonLabel: 'BUTTONS.ENTER' | 'BUTTONS.SUBMIT';
 
     constructor(
         private translate: TranslateService,
         private fb: FormBuilder,
         private spinner: SpinnerVisibilityService,
-        private authService: AuthService
+        private authService: AuthService,
+        private router: Router
     ) {}
 
     // * Angular Lifecycle
@@ -33,10 +39,8 @@ export class StartComponent implements OnInit {
      * Initialize the `FormGroup` to create a new account.
      */
     ngOnInit() {
-        this.creationForm = this.fb.group({
+        this.startForm = this.fb.group({
             email: new FormControl('', Validators.compose([Validators.email, Validators.required])),
-            firstName: new FormControl('', Validators.compose([Validators.required])),
-            lastName: new FormControl('', Validators.compose([Validators.required])),
             password: new FormControl('', Validators.compose([Validators.required]))
         });
     }
@@ -52,17 +56,58 @@ export class StartComponent implements OnInit {
     }
 
     /**
-     * Take the data from `creationForm` and create a new `ICreateAccount`.
+     * Add two more `FormControl` in order to create a new account.
      */
-    didPressSubmit(): void {
+    didPressCreate(): void {
+        // configure card and form for a new account
+        this.showForm = true;
+        this.isNewAccount = true;
+        this.cardTitle = 'START.CARD_HEADER';
+        this.formButtonLabel = 'BUTTONS.SUBMIT';
+
+        this.startForm.addControl('firstName', new FormControl('', Validators.compose([Validators.required])));
+        this.startForm.addControl('lastName', new FormControl('', Validators.compose([Validators.required])));
+    }
+
+    /**
+     * Remove two `FormControl` in order to perform a sign-in.
+     */
+    didPressSignIn(): void {
+        // configure card and form for sing in
+        this.showForm = true;
+        this.isNewAccount = false;
+        this.cardTitle = 'START.CARD_TITLE_ENTER';
+        this.formButtonLabel = 'BUTTONS.ENTER';
+
+        this.startForm.removeControl('firstName');
+        this.startForm.removeControl('lastName');
+    }
+
+    /**
+     * According to the previously selected option, create a new account or sign in the user.
+     */
+    didPressFormButton(): void {
         this.resultAlert = undefined;
         this.spinner.show();
 
+        if (this.isNewAccount) {
+            this._createAccount();
+        } else {
+            this._signIn();
+        }
+    }
+
+    // * Private Methods
+
+    /**
+     * Take the data from `startForm` and create a new `ICreateAccount`.
+     */
+    private _createAccount(): void {
         const newAccount: ICreateAccount = {
-            firstname: this.creationForm.controls['firstName'].value,
-            lastname: this.creationForm.controls['lastName'].value,
-            email: this.creationForm.controls['email'].value,
-            password: this.creationForm.controls['password'].value
+            firstname: this.startForm.controls['firstName'].value,
+            lastname: this.startForm.controls['lastName'].value,
+            email: this.startForm.controls['email'].value,
+            password: this.startForm.controls['password'].value
         };
 
         this.authService.postCreate(newAccount).subscribe(
@@ -78,6 +123,24 @@ export class StartComponent implements OnInit {
                     type: EAlert.ERROR
                 };
             },
+            () => this.spinner.hide()
+        );
+    }
+
+    /**
+     * Sign in the user with the received credentials.
+     */
+    private _signIn(): void {
+        const access: { email: string; password: string } = {
+            email: this.startForm.controls['email'].value,
+            password: this.startForm.controls['password'].value
+        };
+
+        this.authService.postLogin(access).subscribe(
+            () => {
+                // TODO: navigate to the accounts page
+            },
+            undefined,
             () => this.spinner.hide()
         );
     }

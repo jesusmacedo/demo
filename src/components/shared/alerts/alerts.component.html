@@ -1,0 +1,10 @@
+<div
+    [ngClass]="{
+        'alert-success': alert.type === TYPES.SUCCESS,
+        'alert-danger': alert.type === TYPES.ERROR,
+        'alert-primary': alert.type === TYPES.INFO
+    }"
+    class="alert"
+    role="alert"
+    [innerHTML]="alert.content"
+></div>

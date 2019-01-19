@@ -1,0 +1,52 @@
+{
+    "APP_NAME": "Nuevo Banco de México",
+    "BUTTONS": {
+        "SUBMIT": "Enviar",
+        "ENTER": "Iniciar sesión"
+    },
+    "HEADER": {
+        "MENU_HOME": "Cuentas",
+        "MENU_REQUEST": "Solicitar cuenta",
+        "MENU_LOGOUT": "Cerrar sesión",
+        "OPT_LANGUAGE": "Lenguaje",
+        "OPT_LANG_EN": "Inglés",
+        "OPT_LANG_ES": "Español"
+    },
+    "FOOTER": {
+        "COPY": "Jesus Macedo",
+        "VERSION": "Versión: {{value}}"
+    },
+    "START": {
+        "CARD_HEADER": "Crea una nueva cuenta",
+        "CARD_TITLE_JOIN": "Únete hoy!",
+        "CARD_TEXT": "Se parte del MEJOR banco del mundo.",
+        "BUTTON_JOIN": "Crear",
+        "CARD_TITLE_ENTER": "Ya tienes una cuenta? Entra!",
+        "BUTTON_ENTER": "Iniciar sesión",
+        "FORM_CREATE": {
+            "LABEL_FIRSTNAME": "Nombre",
+            "PLACEHOLDER_FIRSTNAME": "Ingresa nombre",
+            "LABEL_LASTNAME": "Apellido",
+            "PLACEHOLDER_LASTNAME": "Ingresa apellido",
+            "LABEL_EMAIL": "Dirección de correo",
+            "PLACEHOLDER_EMAIL": "Ingresa correo",
+            "PRIVACY": "Tus datos estan seguros, revisa nuestra Política de Privacidad",
+            "LABEL_PASSWORD": "Contraseña",
+            "PLACEHOLDER_PASSWORD": "Ingresa la contraseña"
+        }
+    },
+    "ACCOUNTS": {
+        "MESSAGE_ACCOUNTS": "Estas son tus cuentas disponibles:",
+        "MESSAGE_NO_ACCOUNTS": "Aún no tienes cuentas, agrega una por favor.",
+        "CARD_TITLE_ACCOUNT": "Solicitar una nueva cuenta",
+        "CARD_TEXT_ACCOUNT": "Recuerda que puedes solicitar una cuenta adicional en cualquier momento.",
+        "BUTTON_REQUEST": "Solicitar ahora"
+    },
+    "REQUEST": {
+        "CARD_TITLE": "Elige el tipo de tarjeta",
+        "LABEL_SELECT": "Selecciona tipo de tarjeta",
+        "DROP_CARD": "Tarjeta",
+        "SMALL_CARD": "Tipo de tarjeta:",
+        "BUTTON_SEND": "Enviar"
+    }
+}

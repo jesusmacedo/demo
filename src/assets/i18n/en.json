@@ -1,0 +1,52 @@
+{
+    "APP_NAME": "New Bank of Mexico",
+    "BUTTONS": {
+        "SUBMIT": "Submit",
+        "ENTER": "Sign In"
+    },
+    "HEADER": {
+        "MENU_HOME": "Accounts",
+        "MENU_REQUEST": "Request account",
+        "MENU_LOGOUT": "Sign Out",
+        "OPT_LANGUAGE": "Language",
+        "OPT_LANG_EN": "English",
+        "OPT_LANG_ES": "Spanish"
+    },
+    "FOOTER": {
+        "COPY": "Jesus Macedo",
+        "VERSION": "Version: {{value}}"
+    },
+    "START": {
+        "CARD_HEADER": "Create a new account",
+        "CARD_TITLE_JOIN": "Join us today!",
+        "CARD_TEXT": "Be part of the BEST bank in the world.",
+        "BUTTON_JOIN": "Create",
+        "CARD_TITLE_ENTER": "Already have an account? Enter!",
+        "BUTTON_ENTER": "Sign In",
+        "FORM_CREATE": {
+            "LABEL_FIRSTNAME": "First name",
+            "PLACEHOLDER_FIRSTNAME": "Enter first name",
+            "LABEL_LASTNAME": "Last name",
+            "PLACEHOLDER_LASTNAME": "Enter last name",
+            "LABEL_EMAIL": "Email address",
+            "PLACEHOLDER_EMAIL": "Enter email",
+            "PRIVACY": "Your data is safe, check our Privacy Policy",
+            "LABEL_PASSWORD": "Password",
+            "PLACEHOLDER_PASSWORD": "Enter password"
+        }
+    },
+    "ACCOUNTS": {
+        "MESSAGE_ACCOUNTS": "These are your accounts:",
+        "MESSAGE_NO_ACCOUNTS": "There are no accounts yet, please start by adding one.",
+        "CARD_TITLE_ACCOUNT": "Request a new account",
+        "CARD_TEXT_ACCOUNT": "Remember that you can request an additional account anytime.",
+        "BUTTON_REQUEST": "Request now"
+    },
+    "REQUEST": {
+        "CARD_TITLE": "Choose the card type",
+        "LABEL_SELECT": "Select card type",
+        "DROP_CARD": "Card",
+        "SMALL_CARD": "Card type:",
+        "BUTTON_SEND": "Send"
+    }
+}

@@ -1,0 +1,59 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">
+        <img src="./assets/images/wallet.svg" /><span>{{ 'APP_NAME' | translate }}</span>
+    </a>
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li *ngIf="isThereASession" class="nav-item">
+                <a
+                    [routerLink]="['/accounts']"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    class="nav-link"
+                >
+                    {{ 'HEADER.MENU_HOME' | translate }}
+                </a>
+            </li>
+            <li *ngIf="isThereASession" class="nav-item">
+                <a
+                    [routerLink]="['/accounts/request']"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    class="nav-link"
+                >
+                    {{ 'HEADER.MENU_REQUEST' | translate }}
+                </a>
+            </li>
+            <li *ngIf="isThereASession" class="nav-item">
+                <a (click)="didPressLogout()" class="nav-link"> {{ 'HEADER.MENU_LOGOUT' | translate }} </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a
+                    class="nav-link dropdown-toggle"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    {{ 'HEADER.OPT_LANGUAGE' | translate }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" (click)="didSelectLanguage(EN)">{{ 'HEADER.OPT_LANG_EN' | translate }}</a>
+                    <a class="dropdown-item" (click)="didSelectLanguage(ES)">{{ 'HEADER.OPT_LANG_ES' | translate }}</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

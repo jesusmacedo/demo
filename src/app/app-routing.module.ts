@@ -12,6 +12,10 @@ const routes: Routes = [
         loadChildren: '../pages/auth/auth.module#AuthModule'
     },
     {
+        path: 'accounts',
+        loadChildren: '../pages/accounts/accounts.module#AccountsModule'
+    },
+    {
         path: '**',
         redirectTo: 'auth/start',
         pathMatch: 'full'

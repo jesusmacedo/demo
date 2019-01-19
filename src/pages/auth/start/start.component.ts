@@ -138,7 +138,7 @@ export class StartComponent implements OnInit {
 
         this.authService.postLogin(access).subscribe(
             () => {
-                // TODO: navigate to the accounts page
+                this.router.navigate(['/accounts']);
             },
             undefined,
             () => this.spinner.hide()

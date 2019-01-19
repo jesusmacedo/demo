@@ -74,7 +74,7 @@ export class CustomInterceptor implements HttpInterceptor {
         headers['Content-Type'] = 'application/json';
 
         if (type === EHeaders.AUTENTICATED) {
-            headers['X-access-token:'] = MSession.getValueFromSession(MSession.ACCESS_TOKEN);
+            headers['X-access-token'] = MSession.getValueFromSession(MSession.ACCESS_TOKEN);
         }
 
         const newRequest = request.clone({

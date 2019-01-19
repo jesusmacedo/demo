@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CanLoadGuard } from '../guards/can-load/can-load.guard';
 
 const routes: Routes = [
     {
@@ -13,6 +14,7 @@ const routes: Routes = [
     },
     {
         path: 'accounts',
+        canActivateChild: [CanLoadGuard],
         loadChildren: '../pages/accounts/accounts.module#AccountsModule'
     },
     {

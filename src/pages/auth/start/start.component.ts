@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SpinnerVisibilityService } from 'ng-http-loader';
+import { Subscription } from 'rxjs';
 import { EAlert } from '../../../enums/common/alert.enum';
 import { IAlert } from '../../../interfaces/common/alert.interface';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -11,7 +12,7 @@ import { AuthService } from '../../../services/auth/auth.service';
     templateUrl: './start.component.html',
     styleUrls: ['./start.component.sass']
 })
-export class StartComponent implements OnInit {
+export class StartComponent implements OnInit, OnDestroy {
     // handle account creation and sign-in
     showForm = false;
     isNewAccount = false;
@@ -21,6 +22,9 @@ export class StartComponent implements OnInit {
     // card settings
     cardTitle: 'START.CARD_HEADER' | 'START.CARD_TITLE_ENTER';
     formButtonLabel: 'BUTTONS.ENTER' | 'BUTTONS.SUBMIT';
+    // subscriptions to observables
+    private _postCreateSubscription: Subscription;
+    private _postLogin: Subscription;
 
     constructor(
         private fb: FormBuilder,
@@ -39,6 +43,19 @@ export class StartComponent implements OnInit {
             email: new FormControl('', Validators.compose([Validators.email, Validators.required])),
             password: new FormControl('', Validators.compose([Validators.required]))
         });
+    }
+
+    /**
+     * Unsubscribe from `Observable`.
+     */
+    ngOnDestroy() {
+        if (this._postCreateSubscription !== undefined) {
+            this._postCreateSubscription.unsubscribe();
+        }
+
+        if (this._postLogin !== undefined) {
+            this._postLogin.unsubscribe();
+        }
     }
 
     // * User Interaction
@@ -98,8 +115,11 @@ export class StartComponent implements OnInit {
             password: this.startForm.controls['password'].value
         };
 
-        this.authService.postCreate(newAccount).subscribe(
+        this._postCreateSubscription = this.authService.postCreate(newAccount).subscribe(
             (response: { success: string }) => {
+                // clean form
+                this.startForm.reset();
+
                 this.resultAlert = {
                     content: response.success,
                     type: EAlert.SUCCESS
@@ -124,7 +144,7 @@ export class StartComponent implements OnInit {
             password: this.startForm.controls['password'].value
         };
 
-        this.authService.postLogin(access).subscribe(() => {
+        this._postLogin = this.authService.postLogin(access).subscribe(() => {
             this.router.navigate(['/accounts']);
         });
     }

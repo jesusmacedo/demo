@@ -5,8 +5,9 @@
         "ENTER": "Sign In"
     },
     "HEADER": {
-        "MENU_HOME": "Home",
-        "MENU_LOGIN": "Sign In",
+        "MENU_HOME": "Accounts",
+        "MENU_REQUEST": "Request account",
+        "MENU_LOGOUT": "Sign Out",
         "OPT_LANGUAGE": "Language",
         "OPT_LANG_EN": "English",
         "OPT_LANG_ES": "Spanish"
@@ -40,5 +41,12 @@
         "CARD_TITLE_ACCOUNT": "Request a new account",
         "CARD_TEXT_ACCOUNT": "Remember that you can request an additional account anytime.",
         "BUTTON_REQUEST": "Request now"
+    },
+    "REQUEST": {
+        "CARD_TITLE": "Choose the card type",
+        "LABEL_SELECT": "Select card type",
+        "DROP_CARD": "Card",
+        "SMALL_CARD": "Card type:",
+        "BUTTON_SEND": "Send"
     }
 }

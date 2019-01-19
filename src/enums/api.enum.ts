@@ -4,5 +4,7 @@
 export enum EApi {
     postCreate = 'auth/user/create',
     postLogin = 'auth/user/authenticate',
-    getAccounts = 'accounts'
+    getAccounts = 'accounts',
+    getCardCatalog = 'catalogs/cards',
+    postAccount = 'accounts'
 }

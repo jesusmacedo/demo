@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SpinnerVisibilityService } from 'ng-http-loader';
 import { Subscription } from 'rxjs';
@@ -22,7 +23,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     constructor(
         private accountsService: AccountsService,
         private spinner: SpinnerVisibilityService,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private router: Router
     ) {}
 
     // * Angular Lifecycle
@@ -50,5 +52,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
      */
     ngOnDestroy() {
         this._accountsSubscription.unsubscribe();
+    }
+
+    // * User Interaction
+
+    /**
+     * Navigate to `RequestComponent`.
+     */
+    didPressRequestCard(): void {
+        this.spinner.show();
+
+        this.router.navigate(['/accounts/request']);
     }
 }

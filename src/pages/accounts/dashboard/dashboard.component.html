@@ -24,7 +24,9 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ 'ACCOUNTS.CARD_TITLE_ACCOUNT' | translate }}</h5>
                     <p class="card-text">{{ 'ACCOUNTS.CARD_TEXT_ACCOUNT' | translate }}</p>
-                    <a href="#" class="btn btn-primary">{{ 'ACCOUNTS.BUTTON_REQUEST' | translate }}</a>
+                    <a (click)="didPressRequestCard()" class="btn btn-primary">
+                        {{ 'ACCOUNTS.BUTTON_REQUEST' | translate }}
+                    </a>
                 </div>
             </div>
         </div>

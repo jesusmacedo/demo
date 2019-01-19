@@ -14,7 +14,7 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                 >
-                    {{ 'REQUEST.DROP_CARD' | translate }}
+                    {{ dropdownLabel }}
                 </button>
                 <div class="dropdown-menu">
                     <a *ngFor="let card of cardCatalog; let i = index" class="dropdown-item" (click)="didSelectCard(i)">
@@ -24,6 +24,7 @@
             </div>
             <small class="form-text text-muted">{{ 'REQUEST.SMALL_CARD' | translate }} {{ selectedCard?.type }}</small>
         </div>
+        <demo-alerts *ngIf="resultAlert !== undefined" [alert]="resultAlert"></demo-alerts>
         <div class="card-footer text-muted">
             <button
                 type="submit"

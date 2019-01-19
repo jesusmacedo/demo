@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ 'ACCOUNTS.CARD_TITLE_ACCOUNT' | translate }}</h5>
                     <p class="card-text">{{ 'ACCOUNTS.CARD_TEXT_ACCOUNT' | translate }}</p>
-                    <a [routerLink]="['./request']" routerLinkActive="router-link-active" class="btn btn-primary">
+                    <a (click)="didPressRequestCard()" class="btn btn-primary">
                         {{ 'ACCOUNTS.BUTTON_REQUEST' | translate }}
                     </a>
                 </div>

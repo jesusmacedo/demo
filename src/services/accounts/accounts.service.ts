@@ -38,7 +38,7 @@ export class AccountsService {
      * Request the selected `ICard`.
      * @param card selected by user.
      */
-    postAccounts(card: ICard): Observable<any> {
+    postAccounts(card: ICard): Observable<{ success: string }> {
         const payload: {
             userId: string;
             type: ECardType;
@@ -49,6 +49,6 @@ export class AccountsService {
             name: card.name
         };
 
-        return this.http.post(EApi.postAccount, payload).pipe(tap(res => console.log(res)));
+        return this.http.post(EApi.postAccount, payload).pipe(tap((res: { success: string }) => res));
     }
 }

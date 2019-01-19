@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { SpinnerVisibilityService } from 'ng-http-loader';
 import { MSession } from '../../../models/auth/session.model';
 
 /**
@@ -17,7 +19,11 @@ export class HeaderComponent implements OnInit {
     // handle menu options
     isThereASession: boolean;
 
-    constructor(private translate: TranslateService) {}
+    constructor(
+        private translate: TranslateService,
+        private spinner: SpinnerVisibilityService,
+        private router: Router
+    ) {}
 
     // * Angular Lifecycle
 
@@ -36,5 +42,14 @@ export class HeaderComponent implements OnInit {
      */
     didSelectLanguage(lang: 'es' | 'en'): void {
         this.translate.use(lang);
+    }
+
+    /**
+     * Navigate to `RequestComponent`.
+     */
+    didPressRequestCard(): void {
+        this.spinner.show();
+
+        this.router.navigate(['/accounts/request']);
     }
 }

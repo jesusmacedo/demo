@@ -4,12 +4,18 @@
         "SUBMIT": "Enviar",
         "ENTER": "Iniciar sesión"
     },
-    "START": {
+    "HEADER": {
         "MENU_HOME": "Inicio",
         "MENU_LOGIN": "Entrar",
         "OPT_LANGUAGE": "Lenguaje",
         "OPT_LANG_EN": "Inglés",
-        "OPT_LANG_ES": "Español",
+        "OPT_LANG_ES": "Español"
+    },
+    "FOOTER": {
+        "COPY": "Jesus Macedo",
+        "VERSION": "Versión: {{value}}"
+    },
+    "START": {
         "CARD_HEADER": "Crea una nueva cuenta",
         "CARD_TITLE_JOIN": "Únete hoy!",
         "CARD_TEXT": "Se parte del MEJOR banco del mundo.",
@@ -28,8 +34,11 @@
             "PLACEHOLDER_PASSWORD": "Ingresa la contraseña"
         }
     },
-    "FOOTER": {
-        "COPY": "Jesus Macedo",
-        "VERSION": "Versión: {{value}}"
+    "ACCOUNTS": {
+        "MESSAGE_ACCOUNTS": "Estas son tus cuentas disponibles:",
+        "MESSAGE_NO_ACCOUNTS": "Aún no tienes cuentas, agrega una por favor.",
+        "CARD_TITLE_ACCOUNT": "Solicitar una nueva cuenta",
+        "CARD_TEXT_ACCOUNT": "Recuerda que puedes solicitar una cuenta adicional en cualquier momento.",
+        "BUTTON_REQUEST": "Solicitar ahora"
     }
 }

@@ -2,17 +2,29 @@
 
 <demo-alerts *ngIf="resultAlert !== undefined" [alert]="resultAlert"></demo-alerts>
 
+<div *ngIf="accounts.length > 0" class="container bottom-space">
+    <p>{{ 'ACCOUNTS.MESSAGE_ACCOUNTS' | translate }}</p>
+</div>
+
 <div class="container">
-    <div class="row">
-        <div *ngFor="let duh2 of duh" class="col">
+    <div *ngIf="accounts.length > 0" class="row">
+        <div *ngFor="let account of accounts" class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                    </p>
-                    <a href="#" class="card-link">Card link</a> <a href="#" class="card-link">Another link</a>
+                    <h5 class="card-title">{{ account?.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ account?.balance | currency }}</h6>
+                    <button disabled routerLinkActive="router-link-active" class="btn btn-secondary">Detail</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ 'ACCOUNTS.CARD_TITLE_ACCOUNT' | translate }}</h5>
+                    <p class="card-text">{{ 'ACCOUNTS.CARD_TEXT_ACCOUNT' | translate }}</p>
+                    <a href="#" class="btn btn-primary">{{ 'ACCOUNTS.BUTTON_REQUEST' | translate }}</a>
                 </div>
             </div>
         </div>

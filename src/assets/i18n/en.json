@@ -4,12 +4,18 @@
         "SUBMIT": "Submit",
         "ENTER": "Sign In"
     },
-    "START": {
+    "HEADER": {
         "MENU_HOME": "Home",
         "MENU_LOGIN": "Sign In",
         "OPT_LANGUAGE": "Language",
         "OPT_LANG_EN": "English",
-        "OPT_LANG_ES": "Spanish",
+        "OPT_LANG_ES": "Spanish"
+    },
+    "FOOTER": {
+        "COPY": "Jesus Macedo",
+        "VERSION": "Version: {{value}}"
+    },
+    "START": {
         "CARD_HEADER": "Create a new account",
         "CARD_TITLE_JOIN": "Join us today!",
         "CARD_TEXT": "Be part of the BEST bank in the world.",
@@ -28,8 +34,11 @@
             "PLACEHOLDER_PASSWORD": "Enter password"
         }
     },
-    "FOOTER": {
-        "COPY": "Jesus Macedo",
-        "VERSION": "Version: {{value}}"
+    "ACCOUNTS": {
+        "MESSAGE_ACCOUNTS": "These are your accounts:",
+        "MESSAGE_NO_ACCOUNTS": "There are no accounts yet, please start by adding one.",
+        "CARD_TITLE_ACCOUNT": "Request a new account",
+        "CARD_TEXT_ACCOUNT": "Remember that you can request an additional account anytime.",
+        "BUTTON_REQUEST": "Request now"
     }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { SpinnerVisibilityService } from 'ng-http-loader';
 import { EAlert } from '../../../enums/common/alert.enum';
 import { IAlert } from '../../../interfaces/common/alert.interface';
@@ -13,20 +12,17 @@ import { AuthService } from '../../../services/auth/auth.service';
     styleUrls: ['./start.component.sass']
 })
 export class StartComponent implements OnInit {
-    // available languages
-    EN = 'en';
-    ES = 'es';
     // handle account creation and sign-in
     showForm = false;
     isNewAccount = false;
     startForm: FormGroup;
+    // handle messages
     resultAlert: IAlert;
     // card settings
     cardTitle: 'START.CARD_HEADER' | 'START.CARD_TITLE_ENTER';
     formButtonLabel: 'BUTTONS.ENTER' | 'BUTTONS.SUBMIT';
 
     constructor(
-        private translate: TranslateService,
         private fb: FormBuilder,
         private spinner: SpinnerVisibilityService,
         private authService: AuthService,
@@ -46,14 +42,6 @@ export class StartComponent implements OnInit {
     }
 
     // * User Interaction
-
-    /**
-     * Change language for the selected.
-     * @param lang available languages.
-     */
-    didSelectLanguage(lang: 'es' | 'en'): void {
-        this.translate.use(lang);
-    }
 
     /**
      * Add two more `FormControl` in order to create a new account.
@@ -136,12 +124,8 @@ export class StartComponent implements OnInit {
             password: this.startForm.controls['password'].value
         };
 
-        this.authService.postLogin(access).subscribe(
-            () => {
-                this.router.navigate(['/accounts']);
-            },
-            undefined,
-            () => this.spinner.hide()
-        );
+        this.authService.postLogin(access).subscribe(() => {
+            this.router.navigate(['/accounts']);
+        });
     }
 }

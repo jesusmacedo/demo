@@ -1,1 +1,38 @@
 <demo-header></demo-header>
+
+<div class="container">
+    <div *ngIf="cardCatalog.length > 0" class="card">
+        <div class="card-header">{{ 'REQUEST.CARD_TITLE' | translate }}</div>
+        <div class="card-body">
+            <div class="form-group btn-group">
+                <label class="label" for="cardSelect">{{ 'REQUEST.LABEL_SELECT' | translate }}</label>
+                <button
+                    id="cardSelect"
+                    type="button"
+                    class="btn btn-danger dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    {{ 'REQUEST.DROP_CARD' | translate }}
+                </button>
+                <div class="dropdown-menu">
+                    <a *ngFor="let card of cardCatalog; let i = index" class="dropdown-item" (click)="didSelectCard(i)">
+                        {{ card?.name }}
+                    </a>
+                </div>
+            </div>
+            <small class="form-text text-muted">{{ 'REQUEST.SMALL_CARD' | translate }} {{ selectedCard?.type }}</small>
+        </div>
+        <div class="card-footer text-muted">
+            <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="selectedCard === undefined"
+                (click)="didPressSend()"
+            >
+                {{ 'REQUEST.BUTTON_SEND' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

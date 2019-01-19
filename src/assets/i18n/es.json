@@ -41,5 +41,12 @@
         "CARD_TITLE_ACCOUNT": "Solicitar una nueva cuenta",
         "CARD_TEXT_ACCOUNT": "Recuerda que puedes solicitar una cuenta adicional en cualquier momento.",
         "BUTTON_REQUEST": "Solicitar ahora"
+    },
+    "REQUEST": {
+        "CARD_TITLE": "Elige el tipo de tarjeta",
+        "LABEL_SELECT": "Selecciona tipo de tarjeta",
+        "DROP_CARD": "Tarjeta",
+        "SMALL_CARD": "Tipo de tarjeta:",
+        "BUTTON_SEND": "Enviar"
     }
 }

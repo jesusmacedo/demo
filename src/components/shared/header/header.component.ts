@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SpinnerVisibilityService } from 'ng-http-loader';
+import { timer } from 'rxjs';
 import { MSession } from '../../../models/auth/session.model';
 
 /**
@@ -51,5 +52,24 @@ export class HeaderComponent implements OnInit {
         this.spinner.show();
 
         this.router.navigate(['/accounts/request']);
+    }
+
+    /**
+     * Clear the current `ISession` and take the user back to the `StartComponent`.
+     */
+    didPressLogout(): void {
+        this.spinner.show();
+
+        const source = timer(1000);
+
+        source.subscribe(() => {
+            MSession.clearSession().subscribe(
+                () => {
+                    this.router.navigate(['/auth/start']);
+                },
+                undefined,
+                () => this.spinner.hide()
+            );
+        });
     }
 }

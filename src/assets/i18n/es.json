@@ -7,7 +7,7 @@
     "HEADER": {
         "MENU_HOME": "Cuentas",
         "MENU_REQUEST": "Solicitar cuenta",
-        "MENU_LOGIN": "Entrar",
+        "MENU_LOGOUT": "Cerrar sesión",
         "OPT_LANGUAGE": "Lenguaje",
         "OPT_LANG_EN": "Inglés",
         "OPT_LANG_ES": "Español"

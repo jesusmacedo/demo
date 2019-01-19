@@ -35,6 +35,9 @@
                     {{ 'HEADER.MENU_REQUEST' | translate }}
                 </a>
             </li>
+            <li *ngIf="isThereASession" class="nav-item">
+                <a (click)="didPressLogout()" class="nav-link"> {{ 'HEADER.MENU_LOGOUT' | translate }} </a>
+            </li>
             <li class="nav-item dropdown">
                 <a
                     class="nav-link dropdown-toggle"

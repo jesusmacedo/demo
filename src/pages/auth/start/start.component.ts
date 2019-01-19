@@ -40,11 +40,8 @@ export class StartComponent implements OnInit, OnDestroy {
      */
     ngOnInit() {
         this.startForm = this.fb.group({
-            email: new FormControl(
-                'macedo.rjpablo@gmail.com',
-                Validators.compose([Validators.email, Validators.required])
-            ),
-            password: new FormControl('hello', Validators.compose([Validators.required]))
+            email: new FormControl('', Validators.compose([Validators.email, Validators.required])),
+            password: new FormControl('', Validators.compose([Validators.required]))
         });
     }
 

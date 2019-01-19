@@ -5,7 +5,8 @@
         "ENTER": "Iniciar sesión"
     },
     "HEADER": {
-        "MENU_HOME": "Inicio",
+        "MENU_HOME": "Cuentas",
+        "MENU_REQUEST": "Solicitar cuenta",
         "MENU_LOGIN": "Entrar",
         "OPT_LANGUAGE": "Lenguaje",
         "OPT_LANG_EN": "Inglés",

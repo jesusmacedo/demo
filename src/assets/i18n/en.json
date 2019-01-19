@@ -5,7 +5,8 @@
         "ENTER": "Sign In"
     },
     "HEADER": {
-        "MENU_HOME": "Home",
+        "MENU_HOME": "Accounts",
+        "MENU_REQUEST": "Request account",
         "MENU_LOGIN": "Sign In",
         "OPT_LANGUAGE": "Language",
         "OPT_LANG_EN": "English",
